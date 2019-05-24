@@ -1,0 +1,12 @@
+- name: This is a pre-task to install python minimal
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)    
+
+- name: Install Python & dependencies
+  apt: name={{ item }} state=present
+  with_items:
+       - python
+       - python-setuptools
+       - python-dev
+       - build-essential
+       - python-pip
+       - python-mysqldb
